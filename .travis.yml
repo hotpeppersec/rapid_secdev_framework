@@ -1,0 +1,19 @@
+---
+sudo: required
+dist: xenial   # required for Python >= 3.7
+language: python
+python:
+  - 3.6
+addons:
+  apt:
+    packages:
+    - curl
+install: 
+- python3 -m pip install tox
+before_script:
+- sudo apt-get update -qq
+script:
+- echo "test dir `pwd`"
+#- cd python && tox 
+notifications:
+  email: false
