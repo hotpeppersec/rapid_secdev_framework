@@ -1,0 +1,9 @@
+version: '3'
+services:
+  franklin:
+    hostname: franklin
+    volumes:
+      - .:/tmp/workspace
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
