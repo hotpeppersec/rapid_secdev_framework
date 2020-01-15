@@ -18,9 +18,6 @@ So What's This Talk About?
 @title[ansible]
 
 ---
-@title[GitPitch]
-
----
 @title[Python]
 
 ---
@@ -37,3 +34,12 @@ So What's This Talk About?
 
 ---
 @title[molecule]
+
+---
+@title[GitPitch]
+
+---
+@title[lgtm.com]
+
+---
+@title[Coveralls.io]
