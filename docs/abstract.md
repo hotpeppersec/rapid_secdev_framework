@@ -1,0 +1,3 @@
+# Rapid SecDev Framework
+
+This is a quick template using common open source tech that can be used to get a prototype or project off the ground quickly. This framework was created to allow us to spin up many Git repos for blue team security projects. There is always a need for testing that works locally during dev, as well as in the CI/CD pipeline. With this template repo, you can have a familiar framework to get your new tool or automation up and running quickly.

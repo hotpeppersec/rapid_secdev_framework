@@ -6,6 +6,9 @@ So What's This Talk About?
 @snapend
 
 ---
+@title[template repo]
+
+---
 @title[terraform]
 
 ---
@@ -19,6 +22,15 @@ So What's This Talk About?
 
 ---
 @title[Python]
+
+---
+@title[Security]
+
+---
+@title[lgtm.com]
+
+---
+@title[GitPitch]
 
 ---
 @title[testing]
@@ -36,10 +48,6 @@ So What's This Talk About?
 @title[molecule]
 
 ---
-@title[GitPitch]
-
----
-@title[lgtm.com]
-
----
 @title[Coveralls.io]
+
+
