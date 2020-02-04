@@ -49,5 +49,3 @@ So What's This Talk About?
 
 ---
 @title[Coveralls.io]
-
-
