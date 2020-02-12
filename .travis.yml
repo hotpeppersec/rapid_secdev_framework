@@ -4,16 +4,26 @@ dist: xenial   # required for Python >= 3.7
 language: python
 python:
   - 3.6
+  - 3.7
 addons:
   apt:
     packages:
     - curl
+services:
+  - docker
+before_install:
+  - sudo apt-get -qq update
+  - gem install mdl
 install: 
 - python3 -m pip install tox
 before_script:
 - sudo apt-get update -qq
 script:
+# show the PWD on remote
 - echo "test dir `pwd`"
-#- cd python && tox 
+# run tox testing during CI, could also "make test"
+#- cd python && tox
+# test to validate the markdown files in this repo
+- mdl -c .mdlrc .
 notifications:
   email: false
