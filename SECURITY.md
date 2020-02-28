@@ -13,4 +13,4 @@ All versions of this project are currently being supported with security updates
 
 ## Reporting a Vulnerability
 
-Use [the "issues" tab in this repo](https://github.com/hotpeppersec/rapid_secdev_framework/issues) to report any possible security issues to the authors.
+Use [the "issues" tab in this repo](https://github.com/hotpeppersec/rapid_secdev_framework/issues) to report security issues.
