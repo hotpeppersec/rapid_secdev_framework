@@ -24,6 +24,7 @@ script:
 # run tox testing during CI, could also "make test"
 #- cd python && tox
 # test to validate the markdown files in this repo
+cp .mdlrc ~
 - mdl -c .mdlrc .
 notifications:
   email: false
