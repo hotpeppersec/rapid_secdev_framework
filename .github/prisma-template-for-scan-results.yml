@@ -1,0 +1,9 @@
+# Prisma custom template for scan results
+# Please update with the template and commit to master branch under the .github folder before performing scans
+header_template : "############## Validation Results ################\n---------------------------------------------------\n"
+content_template : "File Name : {FileName} \n Severity : {Severity}\n Rule Name :{RuleName}\n Rule : {Rule}\n------------------------------------------------\n"
+#Template for defining title of issues created. 
+issues_title_template : "Vulnerabilities Found : {NumberOfVulnerability}"
+issues_title_template_full_repo_scan : "Issues found during full repo scan"
+#Template for defining title of checks created 
+checks_title_template : "Vulnerabilities Found : {NumberOfVulnerability}"
