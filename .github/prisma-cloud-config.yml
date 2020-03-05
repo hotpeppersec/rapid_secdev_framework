@@ -1,7 +1,7 @@
 # Prisma Cloud IaC Scan Config file. 
 # Please update with the respective environment values and commit to master branch under the .github folder before performing scans
 # API URL for your Prisma Cloud instance
-prisma_cloud_api_url: 'https://app.prismacloud.io'
+prisma_cloud_api_url: 'https://api.prismacloud.io'
 # Example:'https://api.eu.prismacloud.io' or 'https://api4.prismacloud.io'						
 									
 # --Authentication--
