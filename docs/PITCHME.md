@@ -2,11 +2,17 @@
 @title[Intro]
 
 @snap[north-west span-100 text-20 text-bold text-center text-yellow]
-So What's This Talk About?
+Rapid SecDev Framework
 @snapend
 
 ---
 @title[template repo]
+
+---
+@title[Prisma Cloud]
+
+Configure Prisma Cloud like so: 
+https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin/prisma-cloud-devops-security/use-the-prisma-cloud-app-for-github
 
 ---
 @title[terraform]
