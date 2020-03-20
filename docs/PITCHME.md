@@ -11,8 +11,8 @@ Rapid SecDev Framework
 ---
 @title[Prisma Cloud]
 
-Configure Prisma Cloud like so: 
-https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin/prisma-cloud-devops-security/use-the-prisma-cloud-app-for-github
+Configure Prisma Cloud like so:
+[Use the Prisma Cloud App for GitHub](https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin/prisma-cloud-devops-security/use-the-prisma-cloud-app-for-github)
 
 ---
 @title[terraform]
