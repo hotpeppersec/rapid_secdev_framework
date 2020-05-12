@@ -29,8 +29,8 @@ clean: ## Cleanup all the things
 docker: ## build docker container for testing
 	@echo "Building test env with docker-compose"
 	@if [ -f /.dockerenv ]; then echo "Don't run make docker inside docker container" && exit 1; fi;
-	docker-compose -f docker/docker-compose.yml up franklin
-	@docker-compose -f docker/docker-compose.yml run franklin /bin/bash
+	docker-compose -f docker/docker-compose.yml build cloudlab
+	@docker-compose -f docker/docker-compose.yml run cloudlab /bin/bash
 
 python: ## setup python3
 	if [ -f 'requirements.txt' ]; then pip3 install -r$(REQS); fi

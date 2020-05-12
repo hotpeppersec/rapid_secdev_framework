@@ -1,9 +1,9 @@
 version: '3'
 services:
-  franklin:
-    hostname: franklin
+  cloudlab:
+    hostname: cloudlab
     volumes:
-      - .:/tmp/workspace
+      - ..:/home/secdevops
     build:
       context: ..
       dockerfile: docker/Dockerfile
