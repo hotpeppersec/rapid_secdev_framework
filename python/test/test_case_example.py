@@ -1,22 +1,9 @@
-import unittest
-from foo.bar import bat
-
-class FooBarTestCase(unittest.TestCase):
-
-    def setUp(self):
-        self.my_ip1 = '8.8.8.8'
+import pytest
+from cloudlab.lib.helper_functions import check_docker
 
 
-    def tearDown(self):
-        del self.my_ip1
-
-
-    def test_nmap_scan(self):
-        self.assertTrue(next(item for item in self.my_scan if item["ip"] == self.my_ip1))
-
-
-if __name__ == '__main__':
-    unittest.main()
+def test_check_docker():
+    assert(check_docker())
 
 
 """
