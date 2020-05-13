@@ -1,6 +1,7 @@
 .PHONY: docker test
 
-REQS := requirements.txt
+REQS := python/requirements.txt
+REQS_TEST := python/requirements-test.txt
 # Used for colorizing output of echo messages
 BLUE := "\\033[1\;36m"
 NC := "\\033[0m" # No color/default
@@ -26,15 +27,15 @@ clean: ## Cleanup all the things
 	rm -rf myvenv
 	rm -rf .tox/
 
-docker: ## build docker container for testing
+docker: python ## build docker container for testing
 	@echo "Building test env with docker-compose"
 	@if [ -f /.dockerenv ]; then echo "Don't run make docker inside docker container" && exit 1; fi;
 	docker-compose -f docker/docker-compose.yml build cloudlab
 	@docker-compose -f docker/docker-compose.yml run cloudlab /bin/bash
 
 python: ## setup python3
-	if [ -f 'requirements.txt' ]; then pip3 install -r$(REQS); fi
+	if [ -f '$(REQS)' ]; then python3 -m pip install -r$(REQS); fi
 
 test: python ## run tests in container
-	if [ -f 'requirements-test.txt' ]; then pip3 install -rrequirements-test.txt; fi
-	tox
+	if [ -f '$(REQS_TEST)' ]; then python3 -m pip install -r$(REQS_TEST); fi
+	cd python && tox
