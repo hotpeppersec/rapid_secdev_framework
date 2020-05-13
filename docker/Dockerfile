@@ -1,6 +1,6 @@
-FROM python:3.7.7-stretch
+FROM python:3.8.2-buster
 
-ADD . /tmp/project
-WORKDIR /tmp/project
+WORKDIR /home/secdevops
 
-RUN apt-get update && apt-get install -y apt-transport-https
+RUN apt update ;\
+apt install -y apt-utils

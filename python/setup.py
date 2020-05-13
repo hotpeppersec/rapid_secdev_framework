@@ -3,11 +3,10 @@
 from setuptools import setup
 
 setup(
-   name='franklin',
+   name='cloudlab',
    version='1.0',
-   description='A useful module',
-   author='Franklin',
+   description='Cloud Lab Workbook',
+   author='franklin',
    author_email='',
-   packages=['franklin'],  #same as name
-   #install_requires=['foo', 'bar'], #external packages as dependencies
+   packages=['cloudlab']
 )
