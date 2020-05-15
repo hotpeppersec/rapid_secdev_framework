@@ -1,5 +1,5 @@
 FROM alpine:3.11
-LABEL MAINTAINER franklin "<a class="ext-link" href="https://github.com/thedevilsvoice" rel="external ">https://github.com/thedevilsvoice</a>"
+LABEL maintainer "Franklin Diaz <franklin@bitsmasher.net>"
 
 ENV APP_ROOT /home/secdevops
 WORKDIR ${APP_ROOT}
