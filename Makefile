@@ -1,4 +1,4 @@
-.PHONY: docker test
+.PHONY: docker terraform test
 
 REQS := python/requirements.txt
 REQS_TEST := python/requirements-test.txt
@@ -31,10 +31,16 @@ docker: python ## build docker container for testing
 	@echo "Building test env with docker-compose"
 	@if [ -f /.dockerenv ]; then echo "Don't run make docker inside docker container" && exit 1; fi;
 	docker-compose -f docker/docker-compose.yml build cloudlab
+	docker-compose -f docker/docker-compose.yml build ruby-test
 	@docker-compose -f docker/docker-compose.yml run cloudlab /bin/bash
 
 python: ## setup python3
 	if [ -f '$(REQS)' ]; then python3 -m pip install -r$(REQS); fi
+
+terraform: ## setup up terraform env
+	if [ ! -f "terraform/Dockerfile" ]; then cd terraform && wget https://github.com/jessfraz/dockerfiles/raw/master/terraform/Dockerfile; fi
+	docker build --tag my_cloudlab .
+	docker run -name terra my_cloudlab
 
 test: python ## run tests in container
 	if [ -f '$(REQS_TEST)' ]; then python3 -m pip install -r$(REQS_TEST); fi

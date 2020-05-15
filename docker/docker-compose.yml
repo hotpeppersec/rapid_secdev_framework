@@ -7,3 +7,10 @@ services:
     build:
       context: ..
       dockerfile: docker/Dockerfile
+  ruby-test:
+    hostname: cloudlab-ruby
+    volumes:
+      - ..:/home/secdevops
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.ruby
