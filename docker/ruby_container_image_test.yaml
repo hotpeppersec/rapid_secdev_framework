@@ -1,0 +1,43 @@
+schemaVersion: '2.0.0'
+globalEnvVars:
+- key: "VIRTUAL_ENV"
+value: "/env"
+- key: "PATH"
+value: "/env/bin:$PATH"
+ 
+fileExistenceTests:
+- name: 'Gemfile'
+path: '/app/ruby/Gemfile'
+shouldExist: true
+permissions: '-rwxr-xr-x'
+- name: 'Gemfile lock'
+path: '/app/ruby/.lock'
+shouldExist: true
+permissions: '-rwxr-xr-x'
+ 
+fileContentTests:
+- name: 'Gemfile'
+path: '/app/ruby/Gemfile'
+expectedContents: [''https://rubygems.org'']
+ 
+commandTests:
+- name: "ruby package installation"
+command: "which"
+args: ["ruby"]
+expectedOutput: ["/usr/bin/ruby"]
+ 
+- name: "bundler package installation"
+command: "which"
+args: ["bundler"]
+expectedOutput: ["/usr/bin/bundler"]
+ 
+metadataTest:
+env:
+- key: 'RACK_ENV'
+value: 'production'
+labels:
+- key: 'MAINTAINER'
+value: 'Joannah Nanjekye'
+workdir: ['/app']
+exposedPorts: ['9292']
+cmd: ["bundle", "exec", "rackup", "config.ru", "-p", "80", "-s", "thin", "-o", "0.0.0.0"]

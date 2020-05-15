@@ -11,3 +11,10 @@ coverage.xml
 
 # virtualenv
 myvenv/
+
+# Ruby
+.bundle
+*.lock
+
+# terraform
+terraform/Dockerfile
