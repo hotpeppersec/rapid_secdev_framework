@@ -17,4 +17,9 @@ myvenv/
 *.lock
 
 # terraform
+.terraform
 terraform/Dockerfile
+*.tfstate
+terraform.tfstate.backup
+*.tfvars
+*.out

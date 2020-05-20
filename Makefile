@@ -31,7 +31,6 @@ docker: python ## build docker container for testing
 	@echo "Building test env with docker-compose"
 	@if [ -f /.dockerenv ]; then echo "Don't run make docker inside docker container" && exit 1; fi;
 	docker-compose -f docker/docker-compose.yml build cloudlab
-	docker-compose -f docker/docker-compose.yml build ruby-test
 	@docker-compose -f docker/docker-compose.yml run cloudlab /bin/bash
 
 python: ## setup python3
