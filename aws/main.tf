@@ -90,7 +90,7 @@ resource "aws_route_table" "public-rt" {
 }
 
 resource "aws_route_table_association" "public-rt" {
-  subnet_id = aws_subnet.public.id
+  subnet_id      = aws_subnet.public.id
   route_table_id = aws_route_table.public-rt.id
 }
 
@@ -106,7 +106,7 @@ resource "aws_route" "internet_access" {
 resource "aws_security_group" "default" {
   name        = "CloudLab default"
   description = "security group to access instances over SSH and HTTP"
-  vpc_id = module.vpc.vpc_id
+  vpc_id      = module.vpc.vpc_id
 
   # SSH access from anywhere
   ingress {
@@ -134,60 +134,60 @@ resource "aws_security_group" "default" {
 }
 
 resource "aws_security_group" "nat" {
-    name = "vpc_nat"
-    description = "Allow traffic to pass from the private subnet to the internet"
+  name        = "vpc_nat"
+  description = "Allow traffic to pass from the private subnet to the internet"
 
-    ingress {
-        from_port = 80
-        to_port = 80
-        protocol = "tcp"
-        cidr_blocks = [ module.vpc.private_subnets[0] ]
-    }
-    ingress {
-        from_port = 443
-        to_port = 443
-        protocol = "tcp"
-        cidr_blocks = [ module.vpc.private_subnets[0] ]
-    }
-    ingress {
-        from_port = 22
-        to_port = 22
-        protocol = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
-    }
-    ingress {
-        from_port = -1
-        to_port = -1
-        protocol = "icmp"
-        cidr_blocks = ["0.0.0.0/0"]
-    }
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = [module.vpc.private_subnets[0]]
+  }
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = [module.vpc.private_subnets[0]]
+  }
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    from_port   = -1
+    to_port     = -1
+    protocol    = "icmp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
-    egress {
-        from_port = 80
-        to_port = 80
-        protocol = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
-    }
-    egress {
-        from_port = 443
-        to_port = 443
-        protocol = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
-    }
-    egress {
-        from_port = 22
-        to_port = 22
-        protocol = "tcp"
-        cidr_blocks = [module.vpc.vpc_cidr_block]
-    }
-    egress {
-        from_port = -1
-        to_port = -1
-        protocol = "icmp"
-        cidr_blocks = ["0.0.0.0/0"]
-    }
+  egress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  egress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  egress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = [module.vpc.vpc_cidr_block]
+  }
+  egress {
+    from_port   = -1
+    to_port     = -1
+    protocol    = "icmp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
-    vpc_id = module.vpc.vpc_id
+  vpc_id = module.vpc.vpc_id
 
   tags = {
     Terraform   = "true"
@@ -267,7 +267,7 @@ resource "aws_instance" "kali" {
   key_name               = aws_key_pair.auth.id
   vpc_security_group_ids = ["${aws_security_group.default.id}"]
   subnet_id              = aws_subnet.private.id
-  
+
   tags = {
     Owner       = "secdevops"
     Terraform   = "true"
