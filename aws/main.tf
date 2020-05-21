@@ -2,13 +2,6 @@ provider "aws" {
   region = var.region
 }
 
-variable "instances_number" {
-  default = 1
-}
-
-##################################################################
-# Data sources to get VPC, subnet, security group and AMI details
-##################################################################
 data "aws_vpc" "default" {
   default = true
 }
@@ -21,8 +14,8 @@ module "security_group" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "~> 3.0"
 
-  name        = "example"
-  description = "Security group for example usage with EC2 instance"
+  name        = "CloudLab"
+  description = "Security group for the cloud lab"
   vpc_id      = data.aws_vpc.default.id
 
   ingress_cidr_blocks = ["0.0.0.0/0"]
@@ -33,6 +26,7 @@ module "security_group" {
 resource "aws_key_pair" "auth" {
   key_name   = var.key_name
   public_key = file(var.public_key_path)
+
   tags = {
     Owner       = "secdevops"
     Terraform   = "true"
@@ -41,6 +35,7 @@ resource "aws_key_pair" "auth" {
 }
 
 resource "aws_instance" "web" {
+
   connection {
     user = "ubuntu"
     host = self.public_ip
@@ -65,6 +60,26 @@ resource "aws_instance" "web" {
       #"sudo service nginx start",
     ]
   }
+  tags = {
+    Owner       = "secdevops"
+    Terraform   = "true"
+    Environment = "dev"
+  }
+}
+
+resource "aws_instance" "kali" {
+
+  connection {
+    user = "ec2-user"
+    host = self.public_ip
+  }
+
+  instance_type          = "t2.medium"
+  ami                    = "ami-0a967289406d51ad4"
+  key_name               = aws_key_pair.auth.id
+  vpc_security_group_ids = [module.security_group.this_security_group_id]
+  subnet_id              = tolist(data.aws_subnet_ids.all.ids)[0]
+
   tags = {
     Owner       = "secdevops"
     Terraform   = "true"
