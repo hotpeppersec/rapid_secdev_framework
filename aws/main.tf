@@ -10,6 +10,7 @@ data "aws_subnet_ids" "all" {
   vpc_id = data.aws_vpc.default.id
 }
 
+# Example of how to reference an external module
 module "security_group" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "~> 3.0"
