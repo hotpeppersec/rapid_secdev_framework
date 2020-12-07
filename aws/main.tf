@@ -61,6 +61,9 @@ resource "aws_instance" "web" {
       #"sudo service nginx start",
     ]
   }
+  provisioner "local-exec" {
+    command = "ANSIBLE_HOST_KEY_CHECKING=\"False\" ansible-playbook -u ubuntu --private-key=\"~/.ssh/id_rsa\" --extra-vars='{"aws_subnet_id": ${aws_terraform_variable_here}, "aws_security_id": ${aws_terraform_variable_here} }' -i '${azurerm_public_ip.pnic.ip_address},' ansible/deploy-with-ansible.yml"
+  }
   tags = {
     Owner       = "secdevops"
     Terraform   = "true"
