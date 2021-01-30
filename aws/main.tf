@@ -10,9 +10,10 @@ data "aws_subnet_ids" "all" {
   vpc_id = data.aws_vpc.default.id
 }
 
+# Example of how to reference an external module
 module "security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 3.0"
+  version = "~> 3.17.0"
 
   name        = "CloudLab"
   description = "Security group for the cloud lab"
@@ -35,7 +36,6 @@ resource "aws_key_pair" "auth" {
 }
 
 resource "aws_instance" "web" {
-
   connection {
     user = "ubuntu"
     host = self.public_ip
@@ -60,11 +60,19 @@ resource "aws_instance" "web" {
       #"sudo service nginx start",
     ]
   }
+
+  /*
+  provisioner "local-exec" {
+    command = "ANSIBLE_HOST_KEY_CHECKING=\"False\" ansible-playbook -u ubuntu --private-key=\"~/.ssh/id_rsa\" --extra-vars='{\"aws_subnet_id\": ${aws_terraform_variable_here}, \"aws_security_id\": ${aws_terraform_variable_here} }' -i '${azurerm_public_ip.pnic.ip_address},' ansible/deploy-with-ansible.yml"
+
+  }
   tags = {
     Owner       = "secdevops"
     Terraform   = "true"
     Environment = "dev"
   }
+
+*/
 }
 
 resource "aws_instance" "kali" {
