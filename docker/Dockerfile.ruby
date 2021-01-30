@@ -1,4 +1,4 @@
-FROM alpine:3.11
+FROM alpine:3.13
 LABEL maintainer "Franklin Diaz <franklin@bitsmasher.net>"
 
 ENV APP_ROOT /home/secdevops
