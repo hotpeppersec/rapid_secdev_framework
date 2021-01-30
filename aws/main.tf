@@ -13,7 +13,7 @@ data "aws_subnet_ids" "all" {
 # Example of how to reference an external module
 module "security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 3.0"
+  version = "~> 3.17.0"
 
   name        = "CloudLab"
   description = "Security group for the cloud lab"
