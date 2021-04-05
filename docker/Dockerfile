@@ -1,4 +1,4 @@
-FROM python:3.9.3-buster
+FROM python:3.9.4-buster
 LABEL maintainer "Franklin Diaz <franklin@bitsmasher.net>"
 
 WORKDIR /home/secdevops
