@@ -12,7 +12,7 @@ data "aws_subnet_ids" "all" {
 
 module "security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 3.0"
+  version = "~> 4.0.0"
 
   name        = "CloudLab"
   description = "Security group for the cloud lab"
